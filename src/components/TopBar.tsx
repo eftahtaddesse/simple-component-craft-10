@@ -1,8 +1,12 @@
 
 import React, { useState } from "react";
-import { ArrowLeft, Settings } from "lucide-react";
+import { ArrowLeft, Settings, Plus } from "lucide-react";
 
-export const TopBar = () => {
+interface TopBarProps {
+  onPlusClick: () => void;
+}
+
+export const TopBar = ({ onPlusClick }: TopBarProps) => {
   const [title, setTitle] = useState("My Project");
   const [isEditing, setIsEditing] = useState(false);
 
@@ -51,9 +55,18 @@ export const TopBar = () => {
           )}
         </div>
       </div>
-      <button className="p-2 rounded-full hover:bg-gray-100">
-        <Settings size={20} />
-      </button>
+      <div className="flex items-center gap-2">
+        <button 
+          className="p-2 rounded-full hover:bg-gray-100 text-blue-600"
+          onClick={onPlusClick}
+          aria-label="Create new item"
+        >
+          <Plus size={20} />
+        </button>
+        <button className="p-2 rounded-full hover:bg-gray-100">
+          <Settings size={20} />
+        </button>
+      </div>
     </div>
   );
 };
