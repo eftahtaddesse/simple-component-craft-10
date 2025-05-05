@@ -16,13 +16,11 @@ export const MiddleCard = ({ isCollapsed, onCollapseChange, canCollapse }: Middl
     }
   };
   
-  const width = isCollapsed ? "w-[60px]" : "w-[40%]";
-  
   return (
     <Collapsible
       open={!isCollapsed}
       onOpenChange={(open) => canCollapse && onCollapseChange(!open)}
-      className={`${width} bg-white rounded-lg shadow-sm flex flex-col overflow-hidden transition-all duration-300`}
+      className="h-full bg-white rounded-lg shadow-sm flex flex-col overflow-hidden transition-all duration-300"
     >
       <div className="p-4 border-b border-gray-100 flex items-center justify-between">
         {!isCollapsed && <h2 className="font-semibold text-gray-800">Middle Card</h2>}

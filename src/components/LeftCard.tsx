@@ -19,13 +19,11 @@ export const LeftCard = ({ isCollapsed, onCollapseChange, canCollapse }: LeftCar
     }
   };
   
-  const width = isCollapsed ? "w-[60px]" : "w-[40%]";
-  
   return (
     <Collapsible
       open={!isCollapsed}
       onOpenChange={(open) => canCollapse && onCollapseChange(!open)}
-      className={`${width} bg-white rounded-lg shadow-sm flex flex-col overflow-hidden transition-all duration-300`}
+      className="h-full bg-white rounded-lg shadow-sm flex flex-col overflow-hidden transition-all duration-300"
     >
       <div className="p-4 border-b border-gray-100 flex items-center justify-between">
         <div className="flex items-center">
