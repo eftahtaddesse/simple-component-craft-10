@@ -32,7 +32,7 @@ export const LeftCard = ({ isCollapsed, onCollapseChange, canCollapse }: LeftCar
         >
           <ChevronLeft size={18} />
         </CollapsibleTrigger>
-        <h2 className="font-semibold text-gray-800">Left Card</h2>
+        {!isCollapsed && <h2 className="font-semibold text-gray-800">Left Card</h2>}
       </div>
       
       <CollapsibleContent className="flex-1 flex flex-col">

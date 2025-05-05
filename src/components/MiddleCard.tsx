@@ -25,11 +25,11 @@ export const MiddleCard = ({ isCollapsed, onCollapseChange, canCollapse }: Middl
       className={`${width} bg-white rounded-lg shadow-sm flex flex-col overflow-hidden transition-all duration-300`}
     >
       <div className="p-4 border-b border-gray-100 flex items-center justify-between">
-        <h2 className="font-semibold text-gray-800">Middle Card</h2>
+        {!isCollapsed && <h2 className="font-semibold text-gray-800">Middle Card</h2>}
         <CollapsibleTrigger 
           onClick={handleCollapseClick}
           disabled={!canCollapse}
-          className={`ml-2 p-1 rounded-md hover:bg-gray-100 ${!canCollapse ? 'opacity-50 cursor-not-allowed' : ''}`}
+          className={`${isCollapsed ? 'mx-auto' : 'ml-auto'} p-1 rounded-md hover:bg-gray-100 ${!canCollapse ? 'opacity-50 cursor-not-allowed' : ''}`}
         >
           <ChevronRight size={18} />
         </CollapsibleTrigger>
