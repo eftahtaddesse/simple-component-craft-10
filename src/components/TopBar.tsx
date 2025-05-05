@@ -22,24 +22,13 @@ export const TopBar = ({
       setIsEditing(false);
     }
   };
-  return <div className="bg-white h-16 border-b border-gray-200 flex items-center justify-between px-4">
-      <div className="flex items-center">
-        <button className="p-2 rounded-full hover:bg-gray-100">
-          <ArrowLeft size={20} />
-        </button>
-        <div className="ml-4">
-          {isEditing ? <input type="text" value={title} onChange={handleTitleChange} onBlur={handleTitleBlur} onKeyDown={handleKeyDown} className="font-semibold text-lg border-b border-blue-500 focus:outline-none" autoFocus /> : <h1 className="font-semibold text-lg cursor-pointer" onClick={handleTitleClick}>
-              {title}
-            </h1>}
-        </div>
-      </div>
+  return <div className="h-16 border-b border-gray-200 flex items-center justify-between px-4 bg-emerald-300">
+      
       <div className="flex items-center gap-2">
-        <button className="p-2 rounded-full hover:bg-gray-100 text-blue-600" onClick={onPlusClick} aria-label="Create new item">
+        <button onClick={onPlusClick} aria-label="Create new item" className="p-2 bg-teal-500 hover:bg-teal-400 text-white rounded">
           <Plus size={20} />
         </button>
-        <button className="p-2 rounded-full hover:bg-gray-100">
-          <Settings size={20} />
-        </button>
+        
       </div>
     </div>;
 };
