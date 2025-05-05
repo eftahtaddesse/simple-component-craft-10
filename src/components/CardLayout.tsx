@@ -26,6 +26,24 @@ export const CardLayout = () => {
     }
   };
 
+  // Calculate widths based on collapsed states
+  const getLeftWidth = () => {
+    if (leftCollapsed) return "w-[60px]";
+    if (middleCollapsed) return "w-[60%]";
+    return "w-[40%]";
+  };
+
+  const getMiddleWidth = () => {
+    if (middleCollapsed) return "w-[60px]";
+    if (leftCollapsed) return "w-[60%]";
+    return "w-[40%]";
+  };
+
+  const getRightWidth = () => {
+    if (rightCollapsed) return "w-[60px]";
+    return "w-[20%]";
+  };
+
   return (
     <div className="flex flex-1 p-4 gap-4 overflow-hidden">
       <LeftCard 
@@ -41,7 +59,6 @@ export const CardLayout = () => {
       <RightCard 
         isCollapsed={rightCollapsed} 
         onCollapseChange={setRightCollapsed} 
-        // Right card can always collapse
         canCollapse={true}
       />
     </div>
