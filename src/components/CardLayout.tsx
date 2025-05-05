@@ -1,5 +1,5 @@
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { LeftCard } from "./LeftCard";
 import { MiddleCard } from "./MiddleCard";
 import { RightCard } from "./RightCard";
@@ -9,6 +9,11 @@ export const CardLayout = () => {
   const [leftCollapsed, setLeftCollapsed] = useState(false);
   const [middleCollapsed, setMiddleCollapsed] = useState(false);
   const [rightCollapsed, setRightCollapsed] = useState(false);
+
+  // References to store panel sizes
+  const leftSizeRef = useRef(30);
+  const middleSizeRef = useRef(50);
+  const rightSizeRef = useRef(20);
 
   // Handle collapse changes with rules
   const handleLeftCollapseChange = (collapsed: boolean) => {
@@ -30,30 +35,6 @@ export const CardLayout = () => {
   const handleRightCollapseChange = (collapsed: boolean) => {
     setRightCollapsed(collapsed);
   }
-
-  // References to store panel sizes
-  const leftSizeRef = useRef(30);
-  const middleSizeRef = useRef(50);
-  const rightSizeRef = useRef(20);
-
-  // Calculate sizes based on collapsed states
-  const getLeftSize = () => {
-    if (leftCollapsed) return 5;
-    if (middleCollapsed) return leftSizeRef.current + middleSizeRef.current * 0.7;
-    return leftSizeRef.current;
-  };
-
-  const getMiddleSize = () => {
-    if (middleCollapsed) return 5;
-    if (leftCollapsed) return middleSizeRef.current + leftSizeRef.current * 0.7;
-    if (rightCollapsed) return middleSizeRef.current + rightSizeRef.current * 0.7;
-    return middleSizeRef.current;
-  };
-
-  const getRightSize = () => {
-    if (rightCollapsed) return 5;
-    return rightSizeRef.current;
-  };
 
   // Handle resize events to store panel sizes when they're manually resized
   const handleLeftResize = (size: number) => {
@@ -79,7 +60,6 @@ export const CardLayout = () => {
         maxSize={leftCollapsed ? 5 : 60}
         collapsible={leftCollapsed}
         onResize={handleLeftResize}
-        size={getLeftSize()}
       >
         <LeftCard 
           isCollapsed={leftCollapsed} 
@@ -96,7 +76,6 @@ export const CardLayout = () => {
         maxSize={middleCollapsed ? 5 : 70}
         collapsible={middleCollapsed}
         onResize={handleMiddleResize}
-        size={getMiddleSize()}
       >
         <MiddleCard 
           isCollapsed={middleCollapsed} 
@@ -113,7 +92,6 @@ export const CardLayout = () => {
         maxSize={rightCollapsed ? 5 : 30}
         collapsible={rightCollapsed}
         onResize={handleRightResize}
-        size={getRightSize()}
       >
         <RightCard 
           isCollapsed={rightCollapsed} 
