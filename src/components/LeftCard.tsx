@@ -18,8 +18,7 @@ export const LeftCard = () => {
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
         </div>
         <button className="flex items-center justify-center px-3 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
-          <Upload size={18} className="mr-1" />
-          Upload
+          <Upload size={18} />
         </button>
       </div>
       <div className="flex-1 bg-gray-50 p-4 overflow-auto">
